@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<!-- Header-->
+	<header class="bg-primary bg-gradient text-white">
+		<div class="container px-4 text-center">
+			<h1 class="fw-bolder">Biblios1</h1>
+			<p class="lead">Biblios1 - projet - exercice Symfony</p>
+			<a class="btn btn-lg btn-light" href="#">Parcourez le catalogue</a>
+		</div>
+	</header>
+	<!-- About section-->
+	<section id="about">
+		<div class="container px-4">
+			<div class="row gx-4 justify-content-center">
+				<div class="col-lg-8">
+					<h2>Biblios1</h2>
+					<p>Fonctionnalités clés :</p>
+					<ul>
+						<li>Recherche avancée de livres</li>
+						<li>Consultation en temps réel du statut des ouvrages (disponible, emprunté, indisponible)</li>
+						<li>Affichage détaillé des informations sur les livres</li>
+						<li>Processus de réservation simplifié</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
