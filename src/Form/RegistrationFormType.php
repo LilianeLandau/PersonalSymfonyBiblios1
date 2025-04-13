@@ -27,6 +27,9 @@ class RegistrationFormType extends AbstractType
                 'choices' => [
                     'User' => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',
+                    'Modérateur' => 'ROLE_MODERATEUR',
+                    'Ajouter un livre' => 'ROLE_AJOUT_DE_LIVRE',
+                    'Edition de livre' => 'ROLE_EDITION_DE_LIVRE',
                 ],
                 'expanded' => true, //afiche les choix sous forme de checkbox
                 'multiple' => true, //permet un choix multiple

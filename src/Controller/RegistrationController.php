@@ -11,9 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
+//ajouter la classe IsGranted pour la gestion des autorisations
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 class RegistrationController extends AbstractController
 {
-
+    //seuls les utilisateurs ayant le rôle ROLE_ADMIN peuvent enregistrer
+    //un nouvel utilisateur
+    //restreindre l'accès à la route uniquement aux utilisateurs ayant le rôle ROLE_ADMIN
+    #[IsGranted('ROLE_ADMIN')]
     //route pour la page de saisie d'un nouvel utilisateur
     #[Route('/admin/user/new', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
