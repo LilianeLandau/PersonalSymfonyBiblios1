@@ -1,7 +1,7 @@
 <?php
-
+// Déclaration du namespace pour organiser le code
 namespace App\Controller\Admin;
-
+//importer les classes nécessaires
 use App\Entity\Book;
 use App\Enum\BookStatusEnum;
 use App\Repository\BookRepository;
@@ -15,12 +15,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+//ajouter  la classe isGranted pour la sécurité
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
+//ce controller gère les actions d'administration liées aux livres
 #[Route('/admin/book')]
-
 final class BookController extends AbstractController
 {
+    //affiche la liste des livres paginée
     #[Route('', name: 'app_admin_book_index', methods: ['GET'])]
     public function index(Request $request, BookRepository $bookRepository): Response
     {
@@ -39,7 +42,9 @@ final class BookController extends AbstractController
     }
 
 
-
+    //méthode pour créer un livre
+    //l'utilisateur doit avoir ce rôle pour accéder à cette méthode
+    #[IsGranted('ROLE_AJOUT_DE_LIVRE')]
     #[Route('/new', name: 'app_admin_book_new', methods: ['GET', 'POST'])]
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
